@@ -6,8 +6,8 @@ Create a landing page showing interactive details about Harver Technologies - a 
 ## User Requirements & Choices
 1. **Primary Focus**: Both technologies showcase + company information combined
 2. **Interactivity Level**: Advanced animations with scroll-triggered effects and dynamic content
-3. **Design Theme**: Creative/unique (designer's choice) - Swiss Brutalist dark theme with #D4FF00 accent
-4. **Brand Colors**: Custom - Black (#050505) background, White text, Energy Yellow (#D4FF00) accent
+3. **Design Theme**: Classy, Industrial, Big Industry feel with real images (NOT vector-like)
+4. **Brand Colors**: Signal Orange (#FF3B00), Jet Black (#050505), Gunmetal borders (#222225)
 5. **Backend Functionality**: Yes - Contact/inquiry form with MongoDB database storage
 
 ## Architecture
@@ -16,8 +16,17 @@ Create a landing page showing interactive details about Harver Technologies - a 
 - **Frontend**: Next.js 16 (TypeScript) + Tailwind CSS v4
 - **Backend**: FastAPI (Python)
 - **Database**: MongoDB
-- **Animation**: Framer Motion + Lenis Smooth Scrolling
-- **Styling**: Custom CSS with Swiss Brutalist design system
+- **Animation**: Framer Motion + Lenis Smooth Scrolling + React Fast Marquee
+- **Styling**: Swiss Brutalist design system with industrial aesthetic
+
+### Design System (Updated Jan 2026)
+- **Background**: #050505 (Jet Black)
+- **Surface**: #0C0C0E
+- **Primary Accent**: #FF3B00 (Signal Orange)
+- **Borders**: #222225 (Gunmetal)
+- **Typography**: IBM Plex Sans (body), JetBrains Mono (data), Space Grotesk (headings)
+- **Grid System**: Control Room Grid (border-collapse, dense hierarchy)
+- **Images**: Real photography (industrial, corporate portraits)
 
 ### Key Files
 - `/app/frontend/src/app/page.tsx` - Main landing page
@@ -27,64 +36,62 @@ Create a landing page showing interactive details about Harver Technologies - a 
 ## Core Features Implemented
 
 ### Frontend Sections
-1. **Header** - Glassmorphism sticky navigation with logo and nav links
-2. **Hero** - Full-screen with animated particles, gradient text, CTAs
-3. **Stats** - Animated number counters ($2.8B, 214 Patents, 14 Countries, 1850 Employees)
-4. **Core Expertise** - Wireless Energy Harvesting details with 68% efficiency highlight
-5. **Technologies Grid** - 30 technology cards with category filters and expandable modals
-6. **Timeline** - Company milestones from 2012-2026 with vertical timeline
-7. **Leadership** - 3 key leaders with hover effects
-8. **Contact Form** - Full inquiry form with validation and success messaging
-9. **Footer** - Brand tagline and links
+1. **Header** - Glass navigation with Signal Orange CTA button
+2. **Hero** - Industrial power plant background, side stats, kinetic marquee
+3. **Stats** - Control Room Grid with animated JetBrains Mono counters
+4. **Core Expertise** - Circuit board background, 68% efficiency highlight
+5. **Technologies** - Bento grid (6 featured + 24 dense), category filters, modals
+6. **Timeline** - Vertical minimalist line with alternating milestones
+7. **Leadership** - Real executive portraits with hover effects
+8. **Contact Form** - Brutalist inputs, Signal Orange submit button
+9. **Footer** - Brand tagline with subtle links
 
 ### Backend APIs
 - `GET /api/health` - Health check endpoint
 - `GET /api/technologies` - Returns 30 technologies data
 - `POST /api/contact` - Submits contact inquiry to MongoDB
-- `GET /api/inquiries` - Retrieves all inquiries (admin)
+- `GET /api/inquiries` - Retrieves all inquiries (with .limit(100))
 
 ## What's Been Implemented (Jan 2026)
-- [x] Hero section with animated particles and energy-themed design
-- [x] Stats section with animated counters on scroll
-- [x] Core Expertise section highlighting Wireless Energy Harvesting
-- [x] Interactive 30 technologies grid with category filters
-- [x] Technology detail modals with WEH impact notes
-- [x] Timeline section (2012-2026 milestones)
-- [x] Leadership section with 3 team members
-- [x] Contact form with MongoDB persistence
+- [x] Industrial hero with real power plant photography
+- [x] Stats Control Room Grid with animated counters
+- [x] Core Expertise with circuit board imagery
+- [x] Bento grid technologies showcase (6 featured + 24 dense)
+- [x] Category filtering for technologies
+- [x] Minimalist vertical timeline (2012-2026)
+- [x] Leadership with real executive portraits
+- [x] Brutalist contact form with MongoDB persistence
 - [x] Smooth scrolling with Lenis
-- [x] Responsive design for all screen sizes
-- [x] Dark theme with Swiss Brutalist aesthetic
+- [x] Signal Orange accent throughout
 
 ## Test Results
 - Backend: 100% pass
 - Frontend: 100% pass
 - Integration: 100% pass
+- Design: 100% pass
+
+## Deployment Status
+- **Ready for Deployment**: YES
+- All blockers resolved (blockchain deps removed, queries optimized, env vars externalized)
 
 ## Prioritized Backlog
 
 ### P0 (Critical) - DONE
-- All core sections implemented
+- All core sections with industrial design
+- Real photography integration
 - Contact form with database storage
 
 ### P1 (High Priority) - Future
-- Newsletter subscription integration
-- Case studies/portfolio section
-- Downloadable company PDF dossier
+- Video background option for hero
+- Case studies with real deployment images
+- Downloadable PDF corporate dossier
 
 ### P2 (Medium Priority) - Future
-- Multi-language support (Hindi, German, Chinese)
+- Multi-language support
 - Blog/News section
-- Interactive world map showing global presence
-- Video background option for hero
-
-### P3 (Low Priority) - Future
-- Admin dashboard for inquiry management
-- Chatbot integration for instant responses
-- Social media feed integration
+- Interactive world map
 
 ## Next Tasks
-1. Add analytics tracking (Google Analytics or Plausible)
-2. SEO optimization with meta tags and sitemap
-3. Performance optimization (image lazy loading)
-4. Add case studies section with real deployment examples
+1. Add SEO meta tags and Open Graph images
+2. Performance optimization (image lazy loading, WebP)
+3. Analytics integration
