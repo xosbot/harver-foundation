@@ -16,7 +16,5 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Environment
-.env
-.env.local
+# Blackbox CLI
 .blackboxcli/
