@@ -1,15 +1,25 @@
 import { NextResponse } from 'next/server';
 
-const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8001';
+const BACKEND_URL = process.env.BACKEND_URL;
 
 export async function GET() {
+  if (!BACKEND_URL) {
+    // Return fallback data when backend URL is not configured
+    return NextResponse.json({ technologies: getFallbackTechnologies() });
+  }
+
   try {
     const response = await fetch(`${BACKEND_URL}/api/technologies`);
     const data = await response.json();
     return NextResponse.json(data);
   } catch {
-    // Fallback data
-    const technologies = [
+    // Fallback data if backend is unavailable
+    return NextResponse.json({ technologies: getFallbackTechnologies() });
+  }
+}
+
+function getFallbackTechnologies() {
+  return [
       { id: 1, name: 'Artificial Intelligence', short: 'AI/ML/Deep Learning', category: 'core', description: 'Battery-free neural processors enable real-time inference in remote environments.' },
       { id: 2, name: 'Internet of Things', short: 'IoT/IIoT/Sensors', category: 'core', description: 'World\'s largest deployment of self-powered IoT—over 1.2 million nodes.' },
       { id: 3, name: 'Mobile/Social Internet', short: '5G/6G Edge Nodes', category: 'connectivity', description: 'Energy-autonomous 5G/6G edge nodes for livestreaming and social mesh networks.' },
@@ -41,6 +51,4 @@ export async function GET() {
       { id: 29, name: 'Proximity Tech', short: 'RFID/NFC/Beacons', category: 'connectivity', description: 'Battery-free proximity systems for asset tracking.' },
       { id: 30, name: 'New Screens', short: 'MicroLED/Digital Signage', category: 'experience', description: 'Self-powered digital billboards and interactive surfaces.' },
     ];
-    return NextResponse.json({ technologies });
-  }
 }

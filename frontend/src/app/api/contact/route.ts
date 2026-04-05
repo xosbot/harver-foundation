@@ -1,8 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8001';
+const BACKEND_URL = process.env.BACKEND_URL;
 
 export async function POST(request: NextRequest) {
+  if (!BACKEND_URL) {
+    console.error('BACKEND_URL environment variable is not set');
+    return NextResponse.json(
+      { detail: 'Server configuration error. Please try again later.' },
+      { status: 500 }
+    );
+  }
+
   try {
     const body = await request.json();
     
