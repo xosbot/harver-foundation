@@ -80,7 +80,7 @@ async def submit_contact_inquiry(inquiry: ContactInquiry):
 @app.get("/api/inquiries")
 async def get_all_inquiries():
     inquiries = []
-    cursor = db.contact_inquiries.find({}, {"_id": 0})
+    cursor = db.contact_inquiries.find({}, {"_id": 0}).sort("created_at", -1).limit(100)
     async for doc in cursor:
         inquiries.append(doc)
     return {"inquiries": inquiries, "total": len(inquiries)}
