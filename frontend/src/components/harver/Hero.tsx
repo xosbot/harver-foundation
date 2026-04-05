@@ -1,71 +1,65 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap, Globe, Cpu } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
+import Marquee from 'react-fast-marquee';
+
+const marqueeWords = [
+  'ARTIFICIAL INTELLIGENCE',
+  'WIRELESS ENERGY',
+  'QUANTUM COMPUTING',
+  'SMART CITIES',
+  'ROBOTICS',
+  'NANOTECHNOLOGY',
+  'HEALTH TECH',
+  'CYBERSECURITY',
+];
 
 export function Hero() {
   return (
     <section
       data-testid="hero-section"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-[#050505]">
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
+      {/* Background Image - Real Industrial */}
+      <div className="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1771795172587-71ef788374e1?w=1920&q=80"
+          alt="Industrial infrastructure"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/60 via-[#050505]/80 to-[#050505]" />
-        <div className="absolute inset-0 grid-bg" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/90 via-[#050505]/70 to-[#050505]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-[#050505]/50" />
       </div>
 
-      {/* Floating Energy Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-[#D4FF00]"
-            initial={{
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1920),
-              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1080),
-              opacity: 0,
-            }}
-            animate={{
-              y: [null, -100],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 4,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-32">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="text-center"
-        >
-          {/* Pre-heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="flex items-center justify-center gap-3 mb-8"
-          >
-            <div className="h-px w-12 bg-[#D4FF00]" />
-            <span className="font-mono text-xs tracking-[0.3em] text-[#D4FF00] uppercase">
-              Est. 2012 • Delhi NCR, India
+      {/* Marquee Background */}
+      <div className="absolute inset-0 flex items-center overflow-hidden opacity-[0.03] pointer-events-none">
+        <Marquee speed={30} gradient={false}>
+          {marqueeWords.map((word, i) => (
+            <span
+              key={i}
+              className="text-[12vw] font-display font-black tracking-tighter mx-8 outline-text"
+            >
+              {word}
             </span>
-            <div className="h-px w-12 bg-[#D4FF00]" />
+          ))}
+        </Marquee>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-20">
+        <div className="max-w-4xl">
+          {/* Overline */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-4 mb-8"
+          >
+            <div className="w-16 h-px bg-[#FF3B00]" />
+            <span className="font-mono text-xs tracking-[0.2em] text-[#FF3B00] uppercase">
+              Est. 2012 — Delhi NCR, India
+            </span>
           </motion.div>
 
           {/* Main Heading */}
@@ -73,72 +67,72 @@ export function Hero() {
             data-testid="hero-heading"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="font-grotesk text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none mb-8"
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-8"
           >
-            <span className="block">Energy</span>
-            <span className="block gradient-text">Harvested.</span>
-            <span className="block text-[#A3A3A3]">Intelligence</span>
-            <span className="block">Amplified.</span>
+            <span className="block text-white">Energy</span>
+            <span className="block text-[#FF3B00]">Harvested.</span>
+            <span className="block text-[#8A8A93]">Intelligence</span>
+            <span className="block text-white">Amplified.</span>
           </motion.h1>
 
-          {/* Tagline */}
+          {/* Subtitle */}
           <motion.p
             data-testid="hero-tagline"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-lg md:text-xl text-[#A3A3A3] max-w-2xl mx-auto mb-12 leading-relaxed"
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-lg md:text-xl text-[#8A8A93] max-w-2xl leading-relaxed mb-12"
           >
-            The definitive architect of tomorrow. Harnessing ambient energy to power 
-            <span className="text-white font-medium"> 35+ integrated technology verticals</span> across 14 countries.
+            The definitive architect of tomorrow. Harnessing ambient energy to power{' '}
+            <span className="text-white font-semibold">35+ integrated technology verticals</span>{' '}
+            across 14 countries.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex flex-col sm:flex-row gap-4"
           >
             <a
               href="#technologies"
               data-testid="hero-cta-primary"
-              className="btn-primary px-8 py-4 text-base font-semibold flex items-center gap-2 group"
+              className="btn-industrial px-8 py-4 text-sm tracking-wider flex items-center justify-center gap-3 group"
             >
-              Explore Technologies
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              EXPLORE TECHNOLOGIES
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#contact"
               data-testid="hero-cta-secondary"
-              className="btn-secondary px-8 py-4 text-base font-semibold"
+              className="btn-outline px-8 py-4 text-sm tracking-wider text-center"
             >
-              Strategic Partnership
+              STRATEGIC PARTNERSHIP
             </a>
           </motion.div>
+        </div>
 
-          {/* Feature Pills */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
-            className="mt-20 flex flex-wrap justify-center gap-4"
-          >
+        {/* Side Stats */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+          className="hidden xl:block absolute right-12 top-1/2 -translate-y-1/2"
+        >
+          <div className="border-l border-[#222225] pl-8 space-y-8">
             {[
-              { icon: Zap, text: 'Wireless Energy Harvesting' },
-              { icon: Globe, text: '14 Countries' },
-              { icon: Cpu, text: '35+ Tech Verticals' },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-2 px-4 py-2 border border-white/10 bg-white/5"
-              >
-                <item.icon className="w-4 h-4 text-[#D4FF00]" />
-                <span className="text-sm font-medium">{item.text}</span>
+              { value: '$2.8B', label: 'Valuation' },
+              { value: '214', label: 'Patents' },
+              { value: '14', label: 'Countries' },
+            ].map((stat, i) => (
+              <div key={i}>
+                <div className="stat-number text-3xl text-white">{stat.value}</div>
+                <div className="font-mono text-xs text-[#8A8A93] tracking-wider mt-1">{stat.label}</div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </motion.div>
       </div>
 
@@ -146,15 +140,16 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
+          animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border border-white/20 rounded-full flex justify-center pt-2"
+          className="flex flex-col items-center gap-2"
         >
-          <div className="w-1 h-2 bg-[#D4FF00]" />
+          <span className="font-mono text-xs text-[#8A8A93] tracking-wider">SCROLL</span>
+          <ChevronDown className="w-5 h-5 text-[#FF3B00]" />
         </motion.div>
       </motion.div>
     </section>

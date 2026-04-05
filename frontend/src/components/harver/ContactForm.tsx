@@ -46,13 +46,8 @@ export function ContactForm() {
 
       setStatus('success');
       setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        inquiry_type: 'partnership',
-        subject: '',
-        message: '',
+        name: '', email: '', company: '', phone: '',
+        inquiry_type: 'partnership', subject: '', message: '',
       });
     } catch (err) {
       setStatus('error');
@@ -68,67 +63,71 @@ export function ContactForm() {
     <section
       id="contact"
       data-testid="contact-section"
-      className="py-24 md:py-32 relative overflow-hidden bg-[#0a0a0a]"
+      className="py-24 lg:py-32 relative overflow-hidden bg-[#0C0C0E]"
     >
-      <div className="absolute inset-0 grid-bg opacity-20" />
+      <div className="absolute inset-0 grid-technical opacity-30" />
 
-      <div ref={containerRef} className="max-w-7xl mx-auto px-6 md:px-12 relative">
+      <div ref={containerRef} className="max-w-7xl mx-auto px-6 lg:px-12 relative">
         <div className="grid lg:grid-cols-2 gap-16">
-          {/* Left Column - Info */}
+          {/* Left - Info */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
           >
-            <span className="font-mono text-xs tracking-[0.2em] text-[#D4FF00] uppercase block mb-4">
-              Connect With Us
-            </span>
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-px bg-[#FF3B00]" />
+              <span className="font-mono text-xs tracking-[0.2em] text-[#FF3B00] uppercase">
+                Connect With Us
+              </span>
+            </div>
+
             <h2
               data-testid="contact-heading"
-              className="font-grotesk text-4xl md:text-5xl font-black tracking-tighter mb-6"
+              className="font-display text-4xl md:text-5xl font-black tracking-tighter leading-[0.95] mb-6"
             >
               Strategic
               <br />
-              <span className="text-[#A3A3A3]">Partnership</span>
+              <span className="text-[#8A8A93]">Partnership</span>
             </h2>
-            <p className="text-lg text-[#A3A3A3] leading-relaxed mb-8">
-              We invite visionary partners, governments, enterprises, and fellow pioneers to join us. 
+
+            <p className="text-lg text-[#8A8A93] leading-relaxed mb-10">
+              We invite visionary partners, governments, enterprises, and fellow pioneers to join us.
               The future is not coming—it is being harvested.
             </p>
 
-            {/* Contact Info */}
-            <div className="space-y-4 mb-8">
-              <div className="p-4 border border-white/10 bg-[#121212]">
-                <span className="font-mono text-xs text-[#737373] block mb-1">Headquarters</span>
-                <span className="text-white">Knowledge Park, Delhi NCR, India</span>
+            {/* Contact Info Cards */}
+            <div className="space-y-4 mb-10">
+              <div className="border border-[#222225] bg-[#050505] p-5">
+                <span className="font-mono text-xs text-[#8A8A93] block mb-1">HEADQUARTERS</span>
+                <span className="text-white font-medium">Knowledge Park, Delhi NCR, India</span>
               </div>
-              <div className="p-4 border border-white/10 bg-[#121212]">
-                <span className="font-mono text-xs text-[#737373] block mb-1">Email</span>
-                <span className="text-[#D4FF00]">global@harver.tech</span>
+              <div className="border border-[#222225] bg-[#050505] p-5">
+                <span className="font-mono text-xs text-[#8A8A93] block mb-1">EMAIL</span>
+                <span className="text-[#FF3B00] font-medium">global@harver.tech</span>
               </div>
             </div>
 
             {/* Global Presence */}
-            <div className="p-6 border border-[#D4FF00]/20 bg-[#D4FF00]/5">
-              <h3 className="font-grotesk font-bold mb-3">Global Presence</h3>
-              <p className="text-sm text-[#A3A3A3]">
-                <strong className="text-white">R&D Hubs:</strong> Singapore, Munich, Boston, Shenzhen
-                <br />
-                <strong className="text-white">Manufacturing:</strong> India (3), Vietnam, Germany
-              </p>
+            <div className="border border-[#FF3B00]/30 bg-[#FF3B00]/5 p-6">
+              <h3 className="font-display font-bold text-lg mb-3">Global Presence</h3>
+              <div className="text-sm text-[#8A8A93] space-y-1">
+                <p><span className="text-white font-medium">R&D Hubs:</span> Singapore, Munich, Boston, Shenzhen</p>
+                <p><span className="text-white font-medium">Manufacturing:</span> India (3), Vietnam, Germany</p>
+              </div>
             </div>
           </motion.div>
 
-          {/* Right Column - Form */}
+          {/* Right - Form */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
-              <div className="grid md:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-5" data-testid="contact-form">
+              <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="font-mono text-xs tracking-wider text-[#737373] uppercase block mb-2">
+                  <label className="font-mono text-xs tracking-wider text-[#8A8A93] uppercase block mb-2">
                     Full Name *
                   </label>
                   <input
@@ -138,12 +137,12 @@ export function ContactForm() {
                     onChange={handleChange}
                     required
                     data-testid="input-name"
-                    className="w-full px-4 py-3 bg-[#121212] border border-white/10 focus:border-[#D4FF00] outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-[#050505] border border-[#222225] text-white"
                     placeholder="Dr. John Smith"
                   />
                 </div>
                 <div>
-                  <label className="font-mono text-xs tracking-wider text-[#737373] uppercase block mb-2">
+                  <label className="font-mono text-xs tracking-wider text-[#8A8A93] uppercase block mb-2">
                     Email *
                   </label>
                   <input
@@ -153,15 +152,15 @@ export function ContactForm() {
                     onChange={handleChange}
                     required
                     data-testid="input-email"
-                    className="w-full px-4 py-3 bg-[#121212] border border-white/10 focus:border-[#D4FF00] outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-[#050505] border border-[#222225] text-white"
                     placeholder="john@company.com"
                   />
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="font-mono text-xs tracking-wider text-[#737373] uppercase block mb-2">
+                  <label className="font-mono text-xs tracking-wider text-[#8A8A93] uppercase block mb-2">
                     Company
                   </label>
                   <input
@@ -170,12 +169,12 @@ export function ContactForm() {
                     value={formData.company}
                     onChange={handleChange}
                     data-testid="input-company"
-                    className="w-full px-4 py-3 bg-[#121212] border border-white/10 focus:border-[#D4FF00] outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-[#050505] border border-[#222225] text-white"
                     placeholder="Acme Corp"
                   />
                 </div>
                 <div>
-                  <label className="font-mono text-xs tracking-wider text-[#737373] uppercase block mb-2">
+                  <label className="font-mono text-xs tracking-wider text-[#8A8A93] uppercase block mb-2">
                     Phone
                   </label>
                   <input
@@ -184,14 +183,14 @@ export function ContactForm() {
                     value={formData.phone}
                     onChange={handleChange}
                     data-testid="input-phone"
-                    className="w-full px-4 py-3 bg-[#121212] border border-white/10 focus:border-[#D4FF00] outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-[#050505] border border-[#222225] text-white"
                     placeholder="+1 (555) 000-0000"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="font-mono text-xs tracking-wider text-[#737373] uppercase block mb-2">
+                <label className="font-mono text-xs tracking-wider text-[#8A8A93] uppercase block mb-2">
                   Inquiry Type *
                 </label>
                 <select
@@ -199,18 +198,16 @@ export function ContactForm() {
                   value={formData.inquiry_type}
                   onChange={handleChange}
                   data-testid="input-inquiry-type"
-                  className="w-full px-4 py-3 bg-[#121212] border border-white/10 focus:border-[#D4FF00] outline-none transition-colors"
+                  className="w-full px-4 py-3 bg-[#050505] border border-[#222225] text-white"
                 >
                   {inquiryTypes.map(type => (
-                    <option key={type.value} value={type.value}>
-                      {type.label}
-                    </option>
+                    <option key={type.value} value={type.value}>{type.label}</option>
                   ))}
                 </select>
               </div>
 
               <div>
-                <label className="font-mono text-xs tracking-wider text-[#737373] uppercase block mb-2">
+                <label className="font-mono text-xs tracking-wider text-[#8A8A93] uppercase block mb-2">
                   Subject *
                 </label>
                 <input
@@ -220,13 +217,13 @@ export function ContactForm() {
                   onChange={handleChange}
                   required
                   data-testid="input-subject"
-                  className="w-full px-4 py-3 bg-[#121212] border border-white/10 focus:border-[#D4FF00] outline-none transition-colors"
+                  className="w-full px-4 py-3 bg-[#050505] border border-[#222225] text-white"
                   placeholder="Partnership Opportunity"
                 />
               </div>
 
               <div>
-                <label className="font-mono text-xs tracking-wider text-[#737373] uppercase block mb-2">
+                <label className="font-mono text-xs tracking-wider text-[#8A8A93] uppercase block mb-2">
                   Message *
                 </label>
                 <textarea
@@ -236,12 +233,11 @@ export function ContactForm() {
                   required
                   rows={5}
                   data-testid="input-message"
-                  className="w-full px-4 py-3 bg-[#121212] border border-white/10 focus:border-[#D4FF00] outline-none transition-colors resize-none"
-                  placeholder="Tell us about your vision and how we can collaborate..."
+                  className="w-full px-4 py-3 bg-[#050505] border border-[#222225] text-white resize-none"
+                  placeholder="Tell us about your vision..."
                 />
               </div>
 
-              {/* Status Messages */}
               {status === 'success' && (
                 <div data-testid="success-message" className="flex items-center gap-3 p-4 bg-green-500/10 border border-green-500/30 text-green-400">
                   <CheckCircle className="w-5 h-5" />
@@ -260,22 +256,22 @@ export function ContactForm() {
                 type="submit"
                 disabled={status === 'loading'}
                 data-testid="submit-button"
-                className="w-full btn-primary px-8 py-4 text-base font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full btn-industrial px-8 py-4 text-sm tracking-wider flex items-center justify-center gap-3 disabled:opacity-50"
               >
                 {status === 'loading' ? (
                   <>
                     <Loader2 className="w-5 h-5 animate-spin" />
-                    Submitting...
+                    SUBMITTING...
                   </>
                 ) : (
                   <>
                     <Send className="w-5 h-5" />
-                    Submit Inquiry
+                    SUBMIT INQUIRY
                   </>
                 )}
               </button>
 
-              <p className="text-xs text-[#737373] text-center">
+              <p className="text-xs text-[#8A8A93] text-center">
                 By submitting, you agree to our privacy policy. Confidential information will be handled with care.
               </p>
             </form>

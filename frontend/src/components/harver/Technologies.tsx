@@ -8,7 +8,7 @@ import {
   Wifi, Cloud, Printer, Users, Zap, Shield, Mic, Atom,
   UsersRound, Heart, Fingerprint, MapPin, Layers, Hand,
   BatteryCharging, Leaf, CircuitBoard, Building, Server, Radio,
-  Bluetooth, Monitor, ArrowRight, X
+  Bluetooth, Monitor, X
 } from 'lucide-react';
 
 const iconMap: { [key: string]: LucideIcon } = {
@@ -44,18 +44,6 @@ const iconMap: { [key: string]: LucideIcon } = {
   'New Screens': Monitor,
 };
 
-const categoryColors: { [key: string]: string } = {
-  core: '#D4FF00',
-  flagship: '#D4FF00',
-  connectivity: '#00D4FF',
-  data: '#FF00D4',
-  industrial: '#FF6B00',
-  experience: '#00FF6B',
-  security: '#FF0000',
-  advanced: '#9D00FF',
-  environment: '#00FF00',
-};
-
 interface Technology {
   id: number;
   name: string;
@@ -75,60 +63,60 @@ export function Technologies() {
     fetch('/api/technologies')
       .then(res => res.json())
       .then(data => setTechnologies(data.technologies))
-      .catch(() => {
-        // Fallback data
-        setTechnologies([
-          { id: 1, name: 'Artificial Intelligence', short: 'AI/ML/Deep Learning', category: 'core', description: 'Battery-free neural processors (Harver NeuroCore™) enable real-time inference in remote environments.' },
-          { id: 2, name: 'Internet of Things', short: 'IoT/IIoT/Sensors', category: 'core', description: 'World\'s largest deployment of self-powered IoT—over 1.2 million nodes.' },
-          // Add more fallback items as needed
-        ]);
-      });
+      .catch(() => setTechnologies([]));
   }, []);
 
   const categories = ['all', ...Array.from(new Set(technologies.map(t => t.category)))];
   const filteredTechs = filter === 'all' ? technologies : technologies.filter(t => t.category === filter);
-
   const Icon = (name: string) => iconMap[name] || Cpu;
+
+  // Group technologies for bento layout
+  const featuredTechs = filteredTechs.slice(0, 6);
+  const gridTechs = filteredTechs.slice(6);
 
   return (
     <section
       id="technologies"
       data-testid="technologies-section"
-      className="py-24 md:py-32 relative overflow-hidden"
+      className="py-24 lg:py-32 relative overflow-hidden bg-[#050505]"
     >
-      <div className="absolute inset-0 grid-bg opacity-30" />
+      {/* Background */}
+      <div className="absolute inset-0 grid-technical opacity-50" />
 
-      <div ref={containerRef} className="max-w-7xl mx-auto px-6 md:px-12 relative">
-        {/* Section Header */}
+      <div ref={containerRef} className="max-w-7xl mx-auto px-6 lg:px-12 relative">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <span className="font-mono text-xs tracking-[0.2em] text-[#D4FF00] uppercase block mb-4">
-            Technology Portfolio
-          </span>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-16 h-px bg-[#FF3B00]" />
+            <span className="font-mono text-xs tracking-[0.2em] text-[#FF3B00] uppercase">
+              Technology Portfolio
+            </span>
+          </div>
           <h2
             data-testid="technologies-heading"
-            className="font-grotesk text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-6"
+            className="font-display text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.95] mb-4"
           >
             35+ Integrated
             <br />
-            <span className="text-[#A3A3A3]">Verticals</span>
+            <span className="text-[#8A8A93]">Verticals</span>
           </h2>
-          <p className="text-lg text-[#A3A3A3] max-w-2xl leading-relaxed">
-            Every Harver solution creates a closed-loop energy-intelligence ecosystem. 
-            Click any technology to explore its real-world deployment.
+          <p className="text-lg text-[#8A8A93] max-w-2xl">
+            Every Harver solution creates a closed-loop energy-intelligence ecosystem.
+            Click any technology to explore real-world deployments.
           </p>
         </motion.div>
 
-        {/* Category Filters */}
+        {/* Filters */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="flex flex-wrap gap-2 mb-8"
+          className="flex flex-wrap gap-2 mb-10"
           data-testid="tech-filters"
         >
           {categories.map(cat => (
@@ -138,8 +126,8 @@ export function Technologies() {
               onClick={() => setFilter(cat)}
               className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition-all ${
                 filter === cat
-                  ? 'bg-[#D4FF00] text-[#050505]'
-                  : 'border border-white/10 text-[#A3A3A3] hover:border-[#D4FF00] hover:text-white'
+                  ? 'bg-[#FF3B00] text-white'
+                  : 'bg-[#0C0C0E] border border-[#222225] text-[#8A8A93] hover:border-[#FF3B00] hover:text-white'
               }`}
             >
               {cat}
@@ -147,104 +135,109 @@ export function Technologies() {
           ))}
         </motion.div>
 
-        {/* Technologies Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px bg-white/10">
-          {filteredTechs.map((tech, index) => {
+        {/* Bento Grid - Featured */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-px bg-[#222225] mb-px">
+          {featuredTechs.map((tech, index) => {
             const TechIcon = Icon(tech.name);
             return (
               <motion.button
                 key={tech.id}
                 data-testid={`tech-card-${tech.id}`}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: index * 0.03, duration: 0.4 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: index * 0.05, duration: 0.4 }}
                 onClick={() => setSelectedTech(tech)}
-                className="bg-[#050505] p-6 text-left group hover:bg-[#0a0a0a] transition-all duration-300 tech-card relative"
+                className="bg-[#0C0C0E] p-6 lg:p-8 text-left group hover:bg-[#141417] transition-all relative"
               >
-                <div
-                  className="absolute top-0 left-0 w-full h-0.5 transition-all duration-300 group-hover:h-1"
-                  style={{ backgroundColor: categoryColors[tech.category] || '#D4FF00' }}
-                />
-                <TechIcon
-                  className="w-8 h-8 mb-4 transition-colors"
-                  color={categoryColors[tech.category] || '#D4FF00'}
-                />
-                <h3 className="font-grotesk font-bold text-sm mb-1 group-hover:text-[#D4FF00] transition-colors line-clamp-2">
+                <TechIcon className="w-10 h-10 text-[#FF3B00] mb-4 group-hover:scale-110 transition-transform" />
+                <h3 className="font-display font-bold text-lg mb-1 group-hover:text-[#FF3B00] transition-colors">
                   {tech.name}
                 </h3>
-                <p className="text-[10px] font-mono text-[#737373] uppercase tracking-wider">
+                <p className="font-mono text-xs text-[#8A8A93] uppercase tracking-wider">
                   {tech.short}
                 </p>
-                <ArrowRight className="w-4 h-4 absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity text-[#D4FF00]" />
+                <div className="absolute bottom-0 left-0 w-0 h-1 bg-[#FF3B00] group-hover:w-full transition-all duration-300" />
               </motion.button>
             );
           })}
         </div>
 
-        {/* Technology Count */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="mt-8 text-center"
-        >
-          <span className="font-mono text-sm text-[#737373]">
+        {/* Dense Grid - Rest */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-px bg-[#222225]">
+          {gridTechs.map((tech, index) => {
+            const TechIcon = Icon(tech.name);
+            return (
+              <motion.button
+                key={tech.id}
+                data-testid={`tech-card-${tech.id}`}
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ delay: 0.3 + index * 0.02, duration: 0.3 }}
+                onClick={() => setSelectedTech(tech)}
+                className="bg-[#0C0C0E] p-4 text-left group hover:bg-[#141417] transition-all"
+              >
+                <TechIcon className="w-6 h-6 text-[#8A8A93] mb-2 group-hover:text-[#FF3B00] transition-colors" />
+                <h3 className="font-medium text-xs text-white group-hover:text-[#FF3B00] transition-colors line-clamp-2">
+                  {tech.name}
+                </h3>
+              </motion.button>
+            );
+          })}
+        </div>
+
+        {/* Count */}
+        <div className="mt-6 text-center">
+          <span className="font-mono text-sm text-[#8A8A93]">
             Showing {filteredTechs.length} of 30 technologies
           </span>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Technology Detail Modal */}
+      {/* Modal */}
       <AnimatePresence>
         {selectedTech && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
             onClick={() => setSelectedTech(null)}
             data-testid="tech-modal"
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
+              exit={{ scale: 0.95, opacity: 0 }}
               onClick={e => e.stopPropagation()}
-              className="bg-[#121212] border border-white/10 max-w-lg w-full p-8 relative"
+              className="bg-[#0C0C0E] border border-[#222225] max-w-lg w-full relative"
             >
               <button
                 onClick={() => setSelectedTech(null)}
-                className="absolute top-4 right-4 p-2 text-[#737373] hover:text-white transition-colors"
+                className="absolute top-4 right-4 p-2 text-[#8A8A93] hover:text-white transition-colors"
                 data-testid="modal-close"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div
-                className="w-full h-1 mb-6"
-                style={{ backgroundColor: categoryColors[selectedTech.category] || '#D4FF00' }}
-              />
+              <div className="h-1 bg-[#FF3B00]" />
+              
+              <div className="p-8">
+                {(() => {
+                  const ModalIcon = Icon(selectedTech.name);
+                  return <ModalIcon className="w-12 h-12 text-[#FF3B00] mb-4" />;
+                })()}
 
-              {(() => {
-                const ModalIcon = Icon(selectedTech.name);
-                return (
-                  <ModalIcon
-                    className="w-12 h-12 mb-4"
-                    color={categoryColors[selectedTech.category] || '#D4FF00'}
-                  />
-                );
-              })()}
-
-              <span className="font-mono text-xs tracking-wider text-[#737373] uppercase">
-                {selectedTech.category}
-              </span>
-              <h3 className="font-grotesk text-2xl font-bold mt-2 mb-4">{selectedTech.name}</h3>
-              <p className="text-[#A3A3A3] leading-relaxed mb-6">{selectedTech.description}</p>
-
-              <div className="pt-4 border-t border-white/10">
-                <span className="font-mono text-xs text-[#D4FF00]">
-                  WEH Impact: Powers 24/7 autonomous operations without grid dependency
+                <span className="font-mono text-xs tracking-wider text-[#8A8A93] uppercase">
+                  {selectedTech.category}
                 </span>
+                <h3 className="font-display text-2xl font-bold mt-2 mb-4">{selectedTech.name}</h3>
+                <p className="text-[#8A8A93] leading-relaxed mb-6">{selectedTech.description}</p>
+
+                <div className="pt-4 border-t border-[#222225]">
+                  <span className="font-mono text-xs text-[#FF3B00]">
+                    WEH IMPACT: Powers 24/7 autonomous operations without grid dependency
+                  </span>
+                </div>
               </div>
             </motion.div>
           </motion.div>
