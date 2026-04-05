@@ -5,36 +5,12 @@ import { useRef } from 'react';
 import { Zap, Radio, Cpu, Battery, Gauge, Leaf } from 'lucide-react';
 
 const features = [
-  {
-    icon: Radio,
-    title: 'Multi-Source Harvesting',
-    description: 'Simultaneously captures RF (Wi-Fi, 5G, cellular), thermal gradients, vibration, and photovoltaic micro-energy.',
-  },
-  {
-    icon: Cpu,
-    title: 'AI-Driven Beamforming',
-    description: 'Predictive algorithms forecast energy availability with 97.4% accuracy for zero-downtime operations.',
-  },
-  {
-    icon: Zap,
-    title: '68% RF-to-DC Conversion',
-    description: 'Harver Rectenna MetaSurface™ achieves 400% improvement over 2022 industry benchmarks.',
-  },
-  {
-    icon: Battery,
-    title: 'Miniaturization Leadership',
-    description: 'Harver chips measure 2.8 mm² yet deliver up to 15 mW continuous power for edge-AI inference.',
-  },
-  {
-    icon: Gauge,
-    title: '31% Global Market Share',
-    description: 'Deployed in over 2.7 million devices worldwide across 41 countries.',
-  },
-  {
-    icon: Leaf,
-    title: 'Carbon-Negative Since 2024',
-    description: '100% recyclable materials with carbon-negative manufacturing operations.',
-  },
+  { icon: Radio, title: 'Multi-Source Harvesting', value: '5+', unit: 'Sources' },
+  { icon: Cpu, title: 'AI Beamforming Accuracy', value: '97.4', unit: '%' },
+  { icon: Zap, title: 'RF-to-DC Conversion', value: '68', unit: '%' },
+  { icon: Battery, title: 'Chip Size', value: '2.8', unit: 'mm²' },
+  { icon: Gauge, title: 'Global Market Share', value: '31', unit: '%' },
+  { icon: Leaf, title: 'Carbon Negative Since', value: '2024', unit: '' },
 ];
 
 export function CoreExpertise() {
@@ -45,87 +21,83 @@ export function CoreExpertise() {
     <section
       id="expertise"
       data-testid="expertise-section"
-      className="py-24 lg:py-32 relative overflow-hidden"
+      className="py-24 sm:py-32 relative overflow-hidden"
     >
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1760842543713-108c3cadbba1?w=1920&q=80"
-          alt="Circuit board technology"
-          className="w-full h-full object-cover opacity-20"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/95 to-[#050505]/90" />
-      </div>
-
-      <div ref={containerRef} className="max-w-7xl mx-auto px-6 lg:px-12 relative">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left Column - Content */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
+      <div ref={containerRef} className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Left - Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="font-mono text-xs tracking-[0.2em] text-[#00F0FF] uppercase">Core Expertise</span>
+            <h2
+              data-testid="expertise-heading"
+              className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter leading-[0.95] mt-4 mb-6"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-[#FF3B00] flex items-center justify-center">
-                  <Zap className="w-6 h-6 text-white" />
-                </div>
-                <span className="font-mono text-xs tracking-[0.2em] text-[#FF3B00] uppercase">
-                  Core Expertise
-                </span>
-              </div>
+              Wireless Energy
+              <br />
+              <span className="text-[#888]">Harvesting</span>
+            </h2>
+            <p className="text-lg text-[#888] leading-relaxed mb-8">
+              The invisible backbone that electrifies all 35+ verticals. Unlike traditional wireless
+              power transfer, Harver&apos;s WEH technology harvests ambient electromagnetic, thermal,
+              kinetic, and photonic energy at unprecedented efficiencies.
+            </p>
 
-              <h2
-                data-testid="expertise-heading"
-                className="font-display text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.95] mb-6"
-              >
-                Wireless Energy
-                <br />
-                <span className="text-[#8A8A93]">Harvesting</span>
-              </h2>
-
-              <p className="text-lg text-[#8A8A93] leading-relaxed mb-8">
-                The invisible backbone that electrifies all 35+ verticals. Unlike traditional wireless
-                power transfer, Harver&apos;s WEH technology harvests ambient electromagnetic, thermal,
-                kinetic, and photonic energy at unprecedented efficiencies.
-              </p>
-
-              {/* Key Metric */}
-              <div className="border border-[#FF3B00]/30 bg-[#FF3B00]/5 p-6 glow-primary">
-                <div className="flex items-end justify-between">
-                  <div>
-                    <div className="font-mono text-xs text-[#FF3B00] tracking-wider mb-2">
-                      HARVER RECTENNA METASURFACE™
-                    </div>
-                    <div className="text-sm text-[#8A8A93]">
-                      Patented 2021 • AI-optimized nanostructured arrays
-                    </div>
+            {/* Key Highlight */}
+            <div className="bento-card glow-accent">
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="font-mono text-xs text-[#00F0FF] tracking-wider mb-1">
+                    HARVER RECTENNA METASURFACE™
                   </div>
-                  <div className="stat-number text-5xl lg:text-6xl text-[#FF3B00]">68%</div>
+                  <div className="text-sm text-[#888]">
+                    Patented 2021 · AI-optimized nanostructured arrays
+                  </div>
                 </div>
+                <div className="stat-number text-5xl text-[#00F0FF]">68%</div>
               </div>
-            </motion.div>
-          </div>
+            </div>
 
-          {/* Right Column - Features Grid */}
-          <div className="grid sm:grid-cols-2 gap-px bg-[#222225]">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                data-testid={`expertise-feature-${index}`}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="bg-[#0C0C0E] p-6 group hover:bg-[#141417] transition-all"
-              >
-                <feature.icon className="w-8 h-8 text-[#FF3B00] mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="font-display font-bold text-lg mb-2 group-hover:text-[#FF3B00] transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-[#8A8A93] leading-relaxed">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
+            {/* Feature Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8">
+              {features.map((feature, i) => (
+                <motion.div
+                  key={feature.title}
+                  data-testid={`expertise-feature-${i}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
+                  className="p-4 rounded-2xl bg-[#0A0A0A] border border-white/5"
+                >
+                  <feature.icon className="w-5 h-5 text-[#00F0FF] mb-3" />
+                  <div className="stat-number text-2xl text-white">
+                    {feature.value}<span className="text-lg text-[#888]">{feature.unit}</span>
+                  </div>
+                  <div className="text-xs text-[#888] mt-1">{feature.title}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right - Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="relative rounded-3xl overflow-hidden">
+              <img
+                src="https://static.prod-images.emergentagent.com/jobs/7eda1572-c4f0-42a3-ac66-6030124d9fc5/images/7cd7251051c5465a852a55dfecf8c07ce5d653ef1424df7144da9b85d0b29295.png"
+                alt="Wireless Energy Technology"
+                className="w-full h-auto animate-float"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-transparent" />
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

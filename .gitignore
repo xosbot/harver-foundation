@@ -18,3 +18,7 @@ Thumbs.db
 
 # Blackbox CLI
 .blackboxcli/
+-e 
+# Environment files
+*.env
+*.env.*

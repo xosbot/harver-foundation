@@ -1,79 +1,51 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, ChevronDown } from 'lucide-react';
-import Marquee from 'react-fast-marquee';
-
-const marqueeWords = [
-  'ARTIFICIAL INTELLIGENCE',
-  'WIRELESS ENERGY',
-  'QUANTUM COMPUTING',
-  'SMART CITIES',
-  'ROBOTICS',
-  'NANOTECHNOLOGY',
-  'HEALTH TECH',
-  'CYBERSECURITY',
-];
+import { ArrowRight } from 'lucide-react';
 
 export function Hero() {
   return (
     <section
       data-testid="hero-section"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image - Real Industrial */}
+      {/* Premium Background Image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1771795172587-71ef788374e1?w=1920&q=80"
-          alt="Industrial infrastructure"
+          src="https://static.prod-images.emergentagent.com/jobs/7eda1572-c4f0-42a3-ac66-6030124d9fc5/images/b5faba96eecbb8e7a1d4347936078f212b19121444589e0ea04d0cff1ca4870e.png"
+          alt="Energy wave"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/90 via-[#050505]/70 to-[#050505]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-[#050505]/50" />
-      </div>
-
-      {/* Marquee Background */}
-      <div className="absolute inset-0 flex items-center overflow-hidden opacity-[0.03] pointer-events-none">
-        <Marquee speed={30} gradient={false}>
-          {marqueeWords.map((word, i) => (
-            <span
-              key={i}
-              className="text-[12vw] font-display font-black tracking-tighter mx-8 outline-text"
-            >
-              {word}
-            </span>
-          ))}
-        </Marquee>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#030303]/80 via-[#030303]/60 to-[#030303]" />
+        <div className="absolute inset-0 bg-[#030303]/40" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-20">
-        <div className="max-w-4xl">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-24">
+        <div className="max-w-4xl mx-auto text-center">
           {/* Overline */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-4 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-8"
           >
-            <div className="w-16 h-px bg-[#FF3B00]" />
-            <span className="font-mono text-xs tracking-[0.2em] text-[#FF3B00] uppercase">
-              Est. 2012 — Delhi NCR, India
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-[#888]">
+              <span className="w-2 h-2 rounded-full bg-[#00F0FF] animate-pulse-glow" />
+              Pioneering Deep Tech Since 2012
             </span>
           </motion.div>
 
           {/* Main Heading */}
           <motion.h1
             data-testid="hero-heading"
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-8"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter leading-[0.95] mb-8"
           >
-            <span className="block text-white">Energy</span>
-            <span className="block text-[#FF3B00]">Harvested.</span>
-            <span className="block text-[#8A8A93]">Intelligence</span>
-            <span className="block text-white">Amplified.</span>
+            <span className="block text-white">Energy Harvested.</span>
+            <span className="block text-gradient">Intelligence Amplified.</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -81,11 +53,11 @@ export function Hero() {
             data-testid="hero-tagline"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg md:text-xl text-[#8A8A93] max-w-2xl leading-relaxed mb-12"
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-lg lg:text-xl text-[#888] max-w-2xl mx-auto leading-relaxed mb-12"
           >
             The definitive architect of tomorrow. Harnessing ambient energy to power{' '}
-            <span className="text-white font-semibold">35+ integrated technology verticals</span>{' '}
+            <span className="text-white">35+ integrated technology verticals</span>{' '}
             across 14 countries.
           </motion.p>
 
@@ -93,43 +65,47 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4"
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <a
               href="#technologies"
               data-testid="hero-cta-primary"
-              className="btn-industrial px-8 py-4 text-sm tracking-wider flex items-center justify-center gap-3 group"
+              className="btn-premium px-8 py-4 text-base flex items-center gap-2 group"
             >
-              EXPLORE TECHNOLOGIES
+              Explore Technologies
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#contact"
               data-testid="hero-cta-secondary"
-              className="btn-outline px-8 py-4 text-sm tracking-wider text-center"
+              className="btn-ghost px-8 py-4 text-base"
             >
-              STRATEGIC PARTNERSHIP
+              Strategic Partnership
             </a>
           </motion.div>
         </div>
 
-        {/* Side Stats */}
+        {/* Bottom Stats Bar */}
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          className="hidden xl:block absolute right-12 top-1/2 -translate-y-1/2"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="mt-24 lg:mt-32"
         >
-          <div className="border-l border-[#222225] pl-8 space-y-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden">
             {[
               { value: '$2.8B', label: 'Valuation' },
               { value: '214', label: 'Patents' },
               { value: '14', label: 'Countries' },
+              { value: '1,850', label: 'Employees' },
             ].map((stat, i) => (
-              <div key={i}>
-                <div className="stat-number text-3xl text-white">{stat.value}</div>
-                <div className="font-mono text-xs text-[#8A8A93] tracking-wider mt-1">{stat.label}</div>
+              <div
+                key={i}
+                className="bg-[#030303]/80 backdrop-blur-xl px-6 py-8 text-center"
+              >
+                <div className="stat-number text-3xl lg:text-4xl text-white mb-2">{stat.value}</div>
+                <div className="text-sm text-[#888]">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -146,10 +122,9 @@ export function Hero() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center gap-2"
+          className="w-6 h-10 rounded-full border border-white/20 flex justify-center pt-2"
         >
-          <span className="font-mono text-xs text-[#8A8A93] tracking-wider">SCROLL</span>
-          <ChevronDown className="w-5 h-5 text-[#FF3B00]" />
+          <div className="w-1 h-2 rounded-full bg-[#00F0FF]" />
         </motion.div>
       </motion.div>
     </section>

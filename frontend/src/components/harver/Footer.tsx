@@ -1,42 +1,38 @@
 'use client';
 
-import { Zap } from 'lucide-react';
-
 export function Footer() {
   return (
-    <footer data-testid="footer" className="border-t border-[#222225] bg-[#050505]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12">
+    <footer data-testid="footer" className="border-t border-white/5 bg-[#030303]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
           {/* Logo */}
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 bg-[#FF3B00] flex items-center justify-center">
-              <Zap className="w-5 h-5 text-white" />
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00F0FF] to-[#0080FF] flex items-center justify-center">
+              <span className="font-display font-bold text-lg text-white">H</span>
             </div>
             <div>
-              <span className="font-display font-bold text-lg tracking-tight block">HARVER</span>
-              <span className="font-mono text-[9px] text-[#8A8A93] tracking-[0.25em]">TECHNOLOGIES</span>
+              <span className="font-display font-bold text-lg">Harver</span>
+              <span className="font-display font-bold text-lg text-[#888]">.tech</span>
             </div>
           </div>
 
           {/* Tagline */}
-          <div className="text-center">
-            <p className="text-sm text-[#8A8A93]">
-              Energy Harvested. Intelligence Amplified.{' '}
-              <span className="text-[#FF3B00] font-semibold">Humanity Elevated.</span>
-            </p>
-          </div>
+          <p className="text-sm text-[#888] text-center">
+            Energy Harvested. Intelligence Amplified.{' '}
+            <span className="text-[#00F0FF]">Humanity Elevated.</span>
+          </p>
 
           {/* Links */}
-          <div className="flex items-center gap-8 text-sm text-[#8A8A93]">
-            <a href="#" className="hover:text-white transition-colors link-underline">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors link-underline">Terms</a>
-            <a href="#" className="hover:text-white transition-colors link-underline">Careers</a>
+          <div className="flex items-center gap-8 text-sm text-[#555]">
+            <a href="#" className="hover:text-white transition-colors">Privacy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms</a>
+            <a href="#" className="hover:text-white transition-colors">Careers</a>
           </div>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-[#222225] text-center">
-          <p className="font-mono text-xs text-[#8A8A93]">
-            © 2026 Harver Technologies Pvt. Ltd. All rights reserved. Confidential.
+        <div className="mt-12 pt-8 border-t border-white/5 text-center">
+          <p className="font-mono text-xs text-[#555]">
+            © 2026 Harver Technologies Pvt. Ltd. All rights reserved.
           </p>
         </div>
       </div>
