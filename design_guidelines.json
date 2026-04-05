@@ -1,89 +1,134 @@
 {
   "theme": "dark",
-  "archetype": "Archetype 4 (Swiss & High-Contrast) adapted for Deep Tech",
-  "design_philosophy": "Classy, Industrial, and Imposing. Harver Technologies is a $2.8B deep-tech powerhouse. We discard lightweight, bubbly 'tech' aesthetics in favor of a brutalist, industrial edge. We use 'Grid Borders' to expose the skeletal framework of the company's capabilities, using Jet Black backgrounds paired with stark Gunmetal and striking Signal Orange accents. Space is massive; typography is heavy and unrelenting.",
-  "colors": {
-    "background": "#050505",
-    "surface": "#0C0C0E",
-    "surface_hover": "#141417",
-    "border": "#222225",
-    "primary": "#FF3B00",
-    "primary_hover": "#E63500",
-    "text_primary": "#FFFFFF",
-    "text_secondary": "#8A8A93",
-    "accent_glow": "rgba(255, 59, 0, 0.15)",
-    "glass_bg": "rgba(5, 5, 5, 0.6)",
-    "glass_border": "rgba(255, 255, 255, 0.05)"
-  },
+  "archetype": "Archetype 4 (Swiss & High-Contrast) + Archetype 5 (Cinematic Luxury)",
   "typography": {
-    "font_families": {
-      "heading": "Clash Display, Cabinet Grotesk, sans-serif",
-      "body": "IBM Plex Sans, sans-serif",
+    "fonts": {
+      "heading": "Cabinet Grotesk, sans-serif",
+      "body": "Satoshi, sans-serif",
       "mono": "JetBrains Mono, monospace"
     },
-    "scales": {
-      "h1": "text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-[0.9]",
-      "h2": "text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight",
-      "h3": "text-xl sm:text-2xl font-semibold tracking-tight",
-      "body": "text-base leading-relaxed text-[#8A8A93]",
-      "overline": "text-xs font-mono uppercase tracking-[0.2em] text-[#FF3B00]"
+    "hierarchy": {
+      "h1": "text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tighter text-white",
+      "h2": "text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white",
+      "h3": "text-2xl sm:text-3xl font-medium text-white",
+      "body": "text-base lg:text-lg leading-relaxed text-neutral-400",
+      "overline": "text-xs font-mono uppercase tracking-[0.2em] text-neutral-500"
     }
   },
-  "spacing_and_layout": {
-    "generous_spacing": "Use p-8, p-12, p-16, and up to py-32 for sections. Containers with borders MUST have internal padding (e.g., p-8) to avoid content collision.",
-    "grid_strategy": "MODE B: THE CONTROL ROOM GRID for Technologies and Stats. Dense, strict hierarchy. Use border-collapse logic. Apply 1px solid borders (border-[#222225]) with no radius.",
-    "hero_overlay": "Gradient overlay from-black/90 via-black/60 to-transparent to ensure text contrast while retaining the industrial image context."
+  "colors": {
+    "background": "#050505",
+    "surface": "#111111",
+    "surface_elevated": "#1A1A1A",
+    "primary": "#FFFFFF",
+    "primary_muted": "#A3A3A3",
+    "accent": "#00F0FF",
+    "border": "rgba(255, 255, 255, 0.1)",
+    "glass": "rgba(10, 10, 10, 0.6)"
   },
-  "components": {
-    "button": "Flat, sharp edges. bg-[#FF3B00] text-white. No radius (rounded-none). hover:-translate-y-1 hover:shadow-[0_4px_12px_rgba(255,59,0,0.3)] transition-transform px-8 py-4 font-bold tracking-wide",
-    "card": "Flat background (bg-surface), 1px subtle border (border-border), no radius. hover:bg-surface_hover transition-colors.",
-    "navigation": "Crystal Glassmorphism: sticky top-0 z-50 backdrop-blur-xl bg-[#050505]/60 border-b border-[#222225]. Navigation links must be bold and geometric.",
-    "marquee": "Use react-fast-marquee. Kinetic Texture: text-7xl font-black outline text (text-transparent), stroke-width-1, stroke-[#222225].",
-    "stats": "Large monospace numbers (JetBrains Mono). Tracking-tighter. Use text-white or text-primary.",
-    "timeline": "Vertical strict grid line (border-l border-[#222225]). Items branching off with mono dates and sharp rectangular connector nodes.",
-    "form": "Input fields must be flat, bg-[#0C0C0E], border border-[#222225], text-white, rounded-none. focus:border-[#FF3B00] focus:ring-1 focus:ring-[#FF3B00]."
+  "spacing": {
+    "section": "py-24 sm:py-32",
+    "container": "max-w-7xl mx-auto px-6 lg:px-8",
+    "grid_gap": "gap-8 lg:gap-12"
   },
-  "motion": {
-    "hover": "Explicitly set text color. Transitions on transform and opacity.",
-    "scroll": "MANDATORY: Use lenis for smooth scrolling to give the site a heavy, premium momentum.",
-    "entrance": "Staggered fade-up for grid items and timeline elements (Framer Motion)."
+  "surfaces": {
+    "header": "backdrop-blur-2xl bg-[#050505]/60 border-b border-white/5 sticky top-0 z-50",
+    "card": "bg-[#0A0A0A] border border-white/5 shadow-2xl rounded-2xl p-8 hover:bg-[#111111] transition-colors duration-300",
+    "button_primary": "bg-white text-black font-medium px-8 py-4 rounded-full hover:bg-neutral-200 transition-all",
+    "button_secondary": "bg-transparent text-white border border-white/20 px-8 py-4 rounded-full hover:bg-white/5 transition-all"
   },
+  "sections": [
+    {
+      "name": "Hero",
+      "description": "Premium cinematic hero. Large headline, subtle energy wave background, prominent stats.",
+      "components": ["Header", "Typography", "Primary CTA", "Background Image Overlay"],
+      "layout": "Centered content over a cinematic 16:9 AI generated energy wave. 40% black overlay on image.",
+      "motion": "Fade up stagger for text."
+    },
+    {
+      "name": "Stats (The Scale)",
+      "description": "Bento-grid style metrics showcase ($2.8B, 214 Patents, etc).",
+      "components": ["Bento Grid", "Stat Cards", "JetBrains Mono for numbers"],
+      "layout": "Asymmetrical 4-col grid.",
+      "motion": "Hover tracing beam or subtle lift."
+    },
+    {
+      "name": "Core Expertise",
+      "description": "Showcase of Wireless Energy Harvesting (68% efficiency).",
+      "components": ["Feature Card", "AI Tech Image", "Progress/Efficiency Visualizer"],
+      "layout": "50/50 split. Left: sticky typography. Right: Glowing 3D tech showcase image."
+    },
+    {
+      "name": "Technologies Portfolio",
+      "description": "List of 30 technologies. Should use an editorial marquee or a dense technical grid.",
+      "components": ["Marquee", "Technical Grid", "Pills/Tags"],
+      "layout": "Dense technical grid, exposing borders (border-collapse look). Very Swiss, very analytical."
+    },
+    {
+      "name": "Timeline (2012-2026)",
+      "description": "Company milestones timeline.",
+      "components": ["Vertical Timeline", "Milestone Nodes"],
+      "layout": "Left-aligned line with glowing nodes."
+    },
+    {
+      "name": "Leadership",
+      "description": "3 C-suite executives.",
+      "components": ["Profile Cards", "Headshots"],
+      "layout": "3-column grid. Grayscale images that gain color on hover."
+    },
+    {
+      "name": "Partnerships & Contact",
+      "description": "Strategic partnership form.",
+      "components": ["Contact Form", "Shadcn Inputs"],
+      "layout": "2-column. Left: Trust markers & logos. Right: Premium dark-themed form."
+    }
+  ],
   "media": {
-    "image_urls": {
-      "hero_background": {
-        "url": "https://images.unsplash.com/photo-1762279389042-9439bfb6c155?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMHRlY2hub2xvZ3klMjBwYXR0ZXJuJTIwZGFya3xlbnwwfHx8fDE3NzUzNzE3MDh8MA&ixlib=rb-4.1.0&q=85",
-        "description": "Abstract neon lines forming a digital landscape - Use as dark atmospheric background for the hero section with a heavy black overlay."
+    "hero_bg": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/7eda1572-c4f0-42a3-ac66-6030124d9fc5/images/b5faba96eecbb8e7a1d4347936078f212b19121444589e0ea04d0cff1ca4870e.png",
+      "description": "Cinematic glass/titanium glowing energy wave (16:9)",
+      "placement": "Hero Section Background (requires bg-black/60 overlay to ensure text visibility)"
+    },
+    "core_expertise_img": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/7eda1572-c4f0-42a3-ac66-6030124d9fc5/images/7cd7251051c5465a852a55dfecf8c07ce5d653ef1424df7144da9b85d0b29295.png",
+      "description": "Floating titanium rings, wireless energy",
+      "placement": "Core Expertise Section right side image"
+    },
+    "contact_bg": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/7eda1572-c4f0-42a3-ac66-6030124d9fc5/images/c9d22da17fceacc8999606d5c26b7e1c91b6f9f8edaa4406bff8310f06133a32.png",
+      "description": "Dark metallic surface",
+      "placement": "Partnerships Section background"
+    },
+    "server_room": {
+      "url": "https://images.pexels.com/photos/17323801/pexels-photo-17323801.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "High tech server room",
+      "placement": "Timeline section background or general atmospheric texture"
+    },
+    "leadership": [
+      {
+        "url": "https://images.unsplash.com/photo-1762522926157-bcc04bf0b10a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NjZ8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBjb3Jwb3JhdGUlMjBleGVjdXRpdmUlMjBoZWFkc2hvdHxlbnwwfHx8fDE3NzUzNzI2ODd8MA&ixlib=rb-4.1.0&q=85",
+        "name": "Dr. Sarah Chen",
+        "role": "Chief Executive Officer"
       },
-      "core_expertise_machine": {
-        "url": "https://images.unsplash.com/photo-1563456021008-5cd6ac7c005d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzOTB8MHwxfHNlYXJjaHwzfHxtYXNzaXZlJTIwZGFyayUyMGluZHVzdHJpYWwlMjBtYWNoaW5lcnl8ZW58MHx8fHwxNzc1MzcxNzQ2fDA&ixlib=rb-4.1.0&q=85",
-        "description": "Massive gray engine/machine. Use for the Wireless Energy Harvesting core expertise section."
+      {
+        "url": "https://images.unsplash.com/photo-1771898343647-bd979ad8cca5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NjZ8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBjb3Jwb3JhdGUlMjBleGVjdXRpdmUlMjBoZWFkc2hvdHxlbnwwfHx8fDE3NzUzNzI2ODd8MA&ixlib=rb-4.1.0&q=85",
+        "name": "Marcus Vane",
+        "role": "Chief Technology Officer"
       },
-      "technologies_grid_bg": {
-        "url": "https://images.unsplash.com/photo-1680992046617-e2e35451bcdb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2ODh8MHwxfHNlYXJjaHwyfHxkYXJrJTIwc2VydmVyJTIwcm9vbSUyMGZ1dHVyaXN0aWN8ZW58MHx8fHwxNzc1MzcxNzQ2fDA&ixlib=rb-4.1.0&q=85",
-        "description": "Green/Amber server light closeup. Use as an accent image within the 30 Technologies bento grid."
-      },
-      "leadership_1": {
-        "url": "https://images.unsplash.com/photo-1767175620484-1ed37931a0d1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBleGVjdXRpdmUlMjBwb3J0cmFpdCUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3NTM3MTcwOHww&ixlib=rb-4.1.0&q=85",
-        "description": "CEO / Executive 1 Portrait"
-      },
-      "leadership_2": {
-        "url": "https://images.unsplash.com/photo-1770452603217-89b4f03e8271?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBleGVjdXRpdmUlMjBwb3J0cmFpdCUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3NTM3MTcwOHww&ixlib=rb-4.1.0&q=85",
-        "description": "CTO / Executive 2 Portrait"
-      },
-      "leadership_3": {
-        "url": "https://images.unsplash.com/photo-1758600587730-a11917c13b85?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBleGVjdXRpdmUlMjBwb3J0cmFpdCUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3NTM3MTcwOHww&ixlib=rb-4.1.0&q=85",
-        "description": "COO / Executive 3 Portrait"
+      {
+        "url": "https://images.unsplash.com/photo-1769636929261-e913ed023c83?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NjZ8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBjb3Jwb3JhdGUlMjBleGVjdXRpdmUlMjBoZWFkc2hvdHxlbnwwfHx8fDE3NzUzNzI2ODd8MA&ixlib=rb-4.1.0&q=85",
+        "name": "David Rothschild",
+        "role": "Chief Strategy Officer"
       }
-    }
+    ]
   },
-  "instructions_to_main_agent": [
-    "Install required dependencies: yarn add lenis framer-motion lucide-react @radix-ui/react-slot clsx tailwind-merge react-fast-marquee @fontsource/cabinet-grotesk @fontsource/ibm-plex-sans @fontsource/jetbrains-mono",
-    "Use pure HTML + Tailwind for structural layouts to enforce the anti-default, industrial feel. Only use Shadcn components for complex interactive logic like the Contact Form.",
-    "Hero Section: Must use 'media.image_urls.hero_background' with a dark heavy gradient overlay. Implement a massive kinetic marquee (react-fast-marquee) spanning the background with outline text listing key verticals.",
-    "Stats Display ($2.8B, 214 Patents, etc.): Use a strict border-collapse grid layout. High contrast borders (border-[#222225]). Typography should be JetBrains Mono for the numbers.",
-    "30 Technologies Showcase: Use the 'Control Room Grid' approach. Do not list 30 randomly. Group them into distinct bento-box panels with sharp corners and grid lines.",
-    "Timeline (2012-2026): Minimalist, vertical layout. A single strict border-l line, with mono-font dates attached to horizontal 1px strokes.",
-    "Contact/Inquiry Form: Brutalist style. Flat dark inputs, square corners, signal orange focus rings. Include 'data-testid' on all inputs and the submit button.",
-    "Apply 'data-testid' to all key interactive elements (buttons, inputs, links)."
-  ]
+  "technical_rules": {
+    "libraries": [
+      "lucide-react",
+      "framer-motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "accessibility": "Ensure all text meets APCA contrast guidelines. Add data-testid attributes to all interactive and structural elements."
+  },
+  "instructions_to_main_agent": "Implement a monolithic, cinematic dark theme suited for a $2.8B deep-tech company. Rely heavily on typography (Cabinet Grotesk/Satoshi) and negative space. Do not use generic Shadcn cards for the main layout; build custom HTML/Tailwind structures (bento grids, brutalist layouts) and only use Shadcn components for the contact form and interactive micro-components. Ensure the hero image has a heavy black overlay (e.g. bg-black/60) so text remains readable. For the leadership photos, apply a grayscale filter that turns colorful on hover. Remember to include standard SVGs for partner logos like Temasek and SoftBank if image assets are not strictly provided."
 }
