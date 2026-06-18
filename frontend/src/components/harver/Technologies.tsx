@@ -155,6 +155,7 @@ export function Technologies() {
             >
               <button
                 onClick={() => setSelectedTech(null)}
+                aria-label="Close technology details"
                 className="absolute top-6 right-6 p-2 rounded-full bg-white/5 text-[#888] hover:text-white transition-colors"
                 data-testid="modal-close"
               >

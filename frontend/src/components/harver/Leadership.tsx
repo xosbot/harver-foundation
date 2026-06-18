@@ -5,22 +5,10 @@ import { useRef } from 'react';
 
 const leaders = [
   {
-    name: 'Dr. Arjun Harver',
+    name: 'Dr. Shaan Sherif',
     role: 'Founder & Chief Visionary',
-    bio: 'Former lead researcher at IIT Delhi. Pioneered ambient RF energy capture.',
-    image: 'https://images.unsplash.com/photo-1762522926157-bcc04bf0b10a?w=600&q=80',
-  },
-  {
-    name: 'Dr. Priya Sharma',
-    role: 'Chief Executive Officer',
-    bio: 'Stanford MBA. Led $1B+ Series C funding from Temasek & SoftBank.',
-    image: 'https://images.unsplash.com/photo-1771898343647-bd979ad8cca5?w=600&q=80',
-  },
-  {
-    name: 'Prof. Elena Voss',
-    role: 'Chief Scientific Officer',
-    bio: 'Ex-CERN. Nobel laureate advisor. 47 patents in quantum harvesting.',
-    image: 'https://images.unsplash.com/photo-1769636929261-e913ed023c83?w=600&q=80',
+    bio: 'Corporate consultant, inventor, and strategic catalyst. CEO & Co-Founder of Harver Space Corp. Forbes 30 Under 30 (Technology, 2018). 28+ granted patents across aerospace, RF energy, and AI systems. Led the world\'s first miniaturized Synthetic Aperture Radar satellite.',
+    image: '/photo-profile.jpg',
   },
 ];
 
@@ -50,7 +38,7 @@ export function Leadership() {
             Visionary Minds
           </h2>
           <p className="text-lg text-[#888] max-w-xl mx-auto">
-            Guided by a 22-member Global Advisory Board featuring Nobel laureates.
+            Founded by Dr. Shaan Sherif. Guided by a 22-member Global Advisory Board featuring Nobel laureates.
           </p>
         </motion.div>
 

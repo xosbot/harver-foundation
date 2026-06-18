@@ -111,47 +111,47 @@ export function ContactForm() {
             <form onSubmit={handleSubmit} className="space-y-5" data-testid="contact-form">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="text-xs text-[#555] uppercase tracking-wider block mb-2">Name *</label>
-                  <input type="text" name="name" value={formData.name} onChange={handleChange} required
+                  <label htmlFor="contact-name" className="text-xs text-[#555] uppercase tracking-wider block mb-2">Name *</label>
+                  <input id="contact-name" type="text" name="name" value={formData.name} onChange={handleChange} required
                     data-testid="input-name" className="input-premium w-full" placeholder="Dr. John Smith" />
                 </div>
                 <div>
-                  <label className="text-xs text-[#555] uppercase tracking-wider block mb-2">Email *</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} required
+                  <label htmlFor="contact-email" className="text-xs text-[#555] uppercase tracking-wider block mb-2">Email *</label>
+                  <input id="contact-email" type="email" name="email" value={formData.email} onChange={handleChange} required
                     data-testid="input-email" className="input-premium w-full" placeholder="john@company.com" />
                 </div>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="text-xs text-[#555] uppercase tracking-wider block mb-2">Company</label>
-                  <input type="text" name="company" value={formData.company} onChange={handleChange}
+                  <label htmlFor="contact-company" className="text-xs text-[#555] uppercase tracking-wider block mb-2">Company</label>
+                  <input id="contact-company" type="text" name="company" value={formData.company} onChange={handleChange}
                     data-testid="input-company" className="input-premium w-full" placeholder="Acme Corp" />
                 </div>
                 <div>
-                  <label className="text-xs text-[#555] uppercase tracking-wider block mb-2">Phone</label>
-                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange}
+                  <label htmlFor="contact-phone" className="text-xs text-[#555] uppercase tracking-wider block mb-2">Phone</label>
+                  <input id="contact-phone" type="tel" name="phone" value={formData.phone} onChange={handleChange}
                     data-testid="input-phone" className="input-premium w-full" placeholder="+1 (555) 000-0000" />
                 </div>
               </div>
 
               <div>
-                <label className="text-xs text-[#555] uppercase tracking-wider block mb-2">Inquiry Type *</label>
-                <select name="inquiry_type" value={formData.inquiry_type} onChange={handleChange}
+                <label htmlFor="contact-inquiry-type" className="text-xs text-[#555] uppercase tracking-wider block mb-2">Inquiry Type *</label>
+                <select id="contact-inquiry-type" name="inquiry_type" value={formData.inquiry_type} onChange={handleChange}
                   data-testid="input-inquiry-type" className="input-premium w-full">
                   {inquiryTypes.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
                 </select>
               </div>
 
               <div>
-                <label className="text-xs text-[#555] uppercase tracking-wider block mb-2">Subject *</label>
-                <input type="text" name="subject" value={formData.subject} onChange={handleChange} required
+                <label htmlFor="contact-subject" className="text-xs text-[#555] uppercase tracking-wider block mb-2">Subject *</label>
+                <input id="contact-subject" type="text" name="subject" value={formData.subject} onChange={handleChange} required
                   data-testid="input-subject" className="input-premium w-full" placeholder="Partnership Opportunity" />
               </div>
 
               <div>
-                <label className="text-xs text-[#555] uppercase tracking-wider block mb-2">Message *</label>
-                <textarea name="message" value={formData.message} onChange={handleChange} required rows={4}
+                <label htmlFor="contact-message" className="text-xs text-[#555] uppercase tracking-wider block mb-2">Message *</label>
+                <textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} required rows={4}
                   data-testid="input-message" className="input-premium w-full resize-none" placeholder="Tell us about your vision..." />
               </div>
 

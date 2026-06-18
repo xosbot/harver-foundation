@@ -2,8 +2,59 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Harver Technologies | Pioneering Wireless Energy Harvesting",
-  description: "Energy Harvested. Intelligence Amplified. Humanity Elevated. The definitive architect of tomorrow with 35+ integrated technology verticals.",
+  metadataBase: new URL("https://harver-foundation.vercel.app"),
+  title: {
+    default: "Harver Foundation | Pioneering Wireless Energy Harvesting",
+    template: "%s | Harver Foundation",
+  },
+  description:
+    "Energy Harvested. Intelligence Amplified. Humanity Elevated. Harver Foundation pioneers wireless energy harvesting across 35+ integrated technology verticals in 14 countries.",
+  keywords: [
+    "wireless energy harvesting",
+    "WEH",
+    "energy technology",
+    "sustainable energy",
+    "Harver",
+    "deep tech",
+    "RF energy harvesting",
+    "IoT",
+  ],
+  authors: [{ name: "Harver Foundation" }],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://harver-foundation.vercel.app",
+    siteName: "Harver Foundation",
+    title: "Harver Foundation | Pioneering Wireless Energy Harvesting",
+    description:
+      "Energy Harvested. Intelligence Amplified. Humanity Elevated. The definitive architect of tomorrow with 35+ integrated technology verticals.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Harver Foundation — Wireless Energy Harvesting",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Harver Foundation | Pioneering Wireless Energy Harvesting",
+    description:
+      "Energy Harvested. Intelligence Amplified. Humanity Elevated.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

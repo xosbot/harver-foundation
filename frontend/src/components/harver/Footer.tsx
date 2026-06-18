@@ -23,11 +23,11 @@ export function Footer() {
           </p>
 
           {/* Links */}
-          <div className="flex items-center gap-8 text-sm text-[#555]">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-            <a href="#" className="hover:text-white transition-colors">Careers</a>
-          </div>
+          <nav aria-label="Footer navigation" className="flex items-center gap-8 text-sm text-[#555]">
+            <a href="#" aria-label="Privacy Policy" className="hover:text-white transition-colors">Privacy</a>
+            <a href="#" aria-label="Terms of Service" className="hover:text-white transition-colors">Terms</a>
+            <a href="#" aria-label="Careers" className="hover:text-white transition-colors">Careers</a>
+          </nav>
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/5 text-center">
