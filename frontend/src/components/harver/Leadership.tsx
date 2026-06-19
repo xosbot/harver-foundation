@@ -6,10 +6,17 @@ import { useRef } from 'react';
 const leaders = [
   {
     name: 'Dr. Shaan Sherif',
-    role: 'Founder & Chief Visionary',
-    bio: 'Corporate consultant, inventor, and strategic catalyst. CEO & Co-Founder of Harver Space Corp. Forbes 30 Under 30 (Technology, 2018). 28+ granted patents across aerospace, RF energy, and AI systems. Led the world\'s first miniaturized Synthetic Aperture Radar satellite.',
+    role: 'Founder & Chief Visionary Officer',
+    bio: 'Inventor, corporate consultant, and strategic catalyst. CEO & Co-Founder of Harver Space Corp and Harver Space Industries. Pioneering autonomous debris-clearing swarms, orbital power-beaming to fuel Earth from space. Founder of the ONE THING OS cross-platform energy grid. Author of the HSI Dispatch newsletter on Medium covering orbital infrastructure, debris cleanup, and the future of space-powered civilization.',
     image: '/photo-profile.jpg',
   },
+];
+
+const advisoryStats = [
+  { label: 'Advisory Board Members', value: '22' },
+  { label: 'Avg. Industry Experience', value: '24 yrs' },
+  { label: 'Combined Patents Advised', value: '600+' },
+  { label: 'Countries Represented', value: '11' },
 ];
 
 export function Leadership() {
@@ -76,6 +83,21 @@ export function Leadership() {
             </motion.div>
           ))}
         </div>
+
+        {/* Advisory Board Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4"
+        >
+          {advisoryStats.map((stat, i) => (
+            <div key={i} className="bento-card text-center">
+              <div className="stat-number text-3xl text-white mb-2">{stat.value}</div>
+              <div className="text-sm text-[#888]">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

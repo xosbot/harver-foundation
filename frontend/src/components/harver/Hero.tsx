@@ -56,9 +56,9 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-lg lg:text-xl text-[#888] max-w-2xl mx-auto leading-relaxed mb-12"
           >
-            The definitive architect of tomorrow. Harnessing ambient energy to power{' '}
+            Pioneering wireless energy harvesting across{' '}
             <span className="text-white">35+ integrated technology verticals</span>{' '}
-            across 14 countries.
+            spanning 14 countries. The $28.6B wireless power market is the beginning.
           </motion.p>
 
           {/* CTAs */}
@@ -95,10 +95,10 @@ export function Hero() {
         >
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden">
             {[
-              { value: '$2.8B', label: 'Valuation' },
-              { value: '214', label: 'Patents' },
-              { value: '14', label: 'Countries' },
-              { value: '1,850', label: 'Employees' },
+              { value: '$28.6B', label: 'WPT Market 2025' },
+              { value: '22.3%', label: 'Market CAGR' },
+              { value: '35+', label: 'Tech Verticals' },
+              { value: '14', label: 'Countries Active' },
             ].map((stat, i) => (
               <div
                 key={i}
