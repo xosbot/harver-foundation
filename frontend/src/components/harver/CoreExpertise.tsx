@@ -82,20 +82,63 @@ export function CoreExpertise() {
             </div>
           </motion.div>
 
-          {/* Right - Image */}
+          {/* Right - CSS Visual */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative rounded-3xl overflow-hidden">
-              <img
-                src="https://static.prod-images.emergentagent.com/jobs/7eda1572-c4f0-42a3-ac66-6030124d9fc5/images/7cd7251051c5465a852a55dfecf8c07ce5d653ef1424df7144da9b85d0b29295.png"
-                alt="Wireless Energy Technology"
-                className="w-full h-auto animate-float"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-transparent" />
+            <div className="relative aspect-square max-w-md mx-auto">
+              {/* Animated rings */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-full h-full rounded-full border border-[#00F0FF]/10 animate-[spin_60s_linear_infinite]" />
+              </div>
+              <div className="absolute inset-8 flex items-center justify-center">
+                <div className="w-full h-full rounded-full border border-[#00F0FF]/15 animate-[spin_45s_linear_infinite_reverse]" />
+              </div>
+              <div className="absolute inset-16 flex items-center justify-center">
+                <div className="w-full h-full rounded-full border border-[#00F0FF]/20 animate-[spin_30s_linear_infinite]" />
+              </div>
+
+              {/* Center glow */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-32 h-32 rounded-full bg-[#00F0FF]/10 blur-xl animate-pulse" />
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 rounded-full bg-[#00F0FF]/20 blur-lg animate-pulse" />
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-[#00F0FF]/30 blur-md" />
+              </div>
+
+              {/* Orbiting dots */}
+              {[0, 60, 120, 180, 240, 300].map((deg, i) => (
+                <div
+                  key={i}
+                  className="absolute inset-0 flex items-center justify-center"
+                  style={{ transform: `rotate(${deg}deg)` }}
+                >
+                  <div
+                    className="absolute w-3 h-3 rounded-full bg-[#00F0FF] shadow-[0_0_10px_#00F0FF]"
+                    style={{ top: '0', left: '50%', transform: 'translateX(-50%)' }}
+                  />
+                </div>
+              ))}
+
+              {/* Labels */}
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 font-mono text-[10px] text-[#00F0FF]/50 tracking-wider">
+                RF ENERGY
+              </div>
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 font-mono text-[10px] text-[#00F0FF]/50 tracking-wider">
+                DC OUTPUT
+              </div>
+              <div className="absolute left-4 top-1/2 -translate-y-1/2 font-mono text-[10px] text-[#00F0FF]/50 tracking-wider writing-mode-vertical" style={{ writingMode: 'vertical-rl' }}>
+                THERMAL
+              </div>
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 font-mono text-[10px] text-[#00F0FF]/50 tracking-wider" style={{ writingMode: 'vertical-rl' }}>
+                KINETIC
+              </div>
             </div>
           </motion.div>
         </div>

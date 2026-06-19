@@ -5,10 +5,10 @@ import { useRef, useState, useEffect } from 'react';
 import { TrendingUp, Globe, FileText, Users } from 'lucide-react';
 
 const stats = [
-  { value: 28.6, prefix: '$', suffix: 'B', label: 'WPT Market 2025', sub: 'Wireless Power Transmission · IMARC', icon: TrendingUp },
+  { value: 16.4, prefix: '$', suffix: 'B', label: 'WPT Market 2025', sub: 'Wireless Power Transmission · MRFR 2025', icon: TrendingUp },
   { value: 35, prefix: '', suffix: '+', label: 'Tech Verticals', sub: 'Integrated across all divisions', icon: FileText },
   { value: 14, prefix: '', suffix: '', label: 'Countries', sub: 'Active Operations Worldwide', icon: Globe },
-  { value: 184, prefix: '$', suffix: 'B', label: 'WPT Market 2034', sub: 'CAGR 22.3% · IMARC Group', icon: Users },
+  { value: 105, prefix: '$', suffix: 'B', label: 'WPT Market 2035', sub: 'CAGR 20.4% · MRFR Research' , icon: Users },
 ];
 
 function AnimatedNumber({ value, prefix, suffix }: { value: number; prefix: string; suffix: string }) {

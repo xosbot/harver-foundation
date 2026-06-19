@@ -9,15 +9,25 @@ export function Hero() {
       data-testid="hero-section"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Premium Background Image */}
+      {/* CSS-based Background */}
       <div className="absolute inset-0">
-        <img
-          src="https://static.prod-images.emergentagent.com/jobs/7eda1572-c4f0-42a3-ac66-6030124d9fc5/images/b5faba96eecbb8e7a1d4347936078f212b19121444589e0ea04d0cff1ca4870e.png"
-          alt="Energy wave"
-          className="w-full h-full object-cover"
+        {/* Gradient mesh background */}
+        <div className="absolute inset-0 bg-[#030303]" />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#00F0FF]/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#0080FF]/5 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00F0FF]/3 rounded-full blur-[150px]" />
+
+        {/* Grid overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,240,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,240,255,0.3) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px',
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#030303]/80 via-[#030303]/60 to-[#030303]" />
-        <div className="absolute inset-0 bg-[#030303]/40" />
+
+        {/* Radial vignette */}
+        <div className="absolute inset-0 bg-radial from-transparent via-transparent to-[#030303]" />
       </div>
 
       {/* Content */}
@@ -58,7 +68,7 @@ export function Hero() {
           >
             Pioneering wireless energy harvesting across{' '}
             <span className="text-white">35+ integrated technology verticals</span>{' '}
-            spanning 14 countries. The $28.6B wireless power market is the beginning.
+            spanning 14 countries. The $16.4B wireless power market is just the beginning.
           </motion.p>
 
           {/* CTAs */}
@@ -95,8 +105,8 @@ export function Hero() {
         >
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden">
             {[
-              { value: '$28.6B', label: 'WPT Market 2025' },
-              { value: '22.3%', label: 'Market CAGR' },
+              { value: '$16.4B', label: 'WPT Market 2025' },
+              { value: '20.4%', label: 'Market CAGR' },
               { value: '35+', label: 'Tech Verticals' },
               { value: '14', label: 'Countries Active' },
             ].map((stat, i) => (
